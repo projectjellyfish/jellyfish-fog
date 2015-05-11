@@ -1,3 +1,3 @@
-Jellyfish Audit
+Jellyfish Fog
 =======
-Adds audit support to [Project Jellyfish] (https://github.com/projectjellyfish/api).
+Adds Fog support to [Project Jellyfish] (https://github.com/projectjellyfish/api).
