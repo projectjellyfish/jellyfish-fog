@@ -1,2 +1,3 @@
-# jellyfish-fog
-General Provisioning of VM's using Fog
+= JellyfishFog
+
+This project rocks and uses MIT-LICENSE.
