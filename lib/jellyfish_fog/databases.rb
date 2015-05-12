@@ -30,7 +30,7 @@ module Jellyfish
       end
 
       def connection
-        ::Fog::AWS::RDS.new(Jellyfish::Fog::AWS.aws_settings)
+        ::Fog::AWS::RDS.new(Jellyfish::Fog.aws_settings)
       end
 
       def identifier

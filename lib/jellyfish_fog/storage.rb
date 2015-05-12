@@ -23,7 +23,7 @@ module Jellyfish
       private
 
       def connection
-        ::Fog::Storage.new(Jellyfish::Fog::AWS.aws_settings.merge(provider: 'AWS'))
+        ::Fog::Storage.new(Jellyfish::Fog.aws_settings.merge(provider: 'AWS'))
       end
 
       def storage_key
