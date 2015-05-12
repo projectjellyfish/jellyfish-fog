@@ -1,6 +1,6 @@
 # Jellyfish Fog
 
-Adds infrastructure, database, and storage product types to Jellyfish, and enables their provisioning on cloud service providers (AWS, Azure, DigitalOcean and VMWare) via the [Fog](http://fog.io) gem.
+Adds infrastructure, database, and storage product types to [Project Jellyfish API](https://github.com/projectjellyfish/api), and enables their provisioning on cloud service providers ([AWS](http://aws.amazon.com), [Azure](http://azure.microsoft.com/en-us), [DigitalOcean](https://www.digitalocean.com) and [VMWare](https://www.vmware.com/products/vrealize-suite)) via the [Fog](http://fog.io) gem.
 
 ## Installation
 
@@ -38,7 +38,7 @@ assets.
 
 ## License
 
-See LICENSE
+See [LICENSE](https://github.com/projectjellyfish/jellyfish-fog/blob/master/LICENSE)
 
 
 Copyright 2015 Booz Allen Hamilton
