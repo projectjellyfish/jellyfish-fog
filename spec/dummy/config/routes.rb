@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   get '/rails/info/routes'     => 'rails/info#routes'
   get '/rails/info'            => 'rails/info#index'
   get '/'                      => 'rails/welcome#index'
-  mount JellyfishFog::Engine => '/jellyfish_fog'
+  mount Jellyfish::Fog::Engine => '/jellyfish_fog'
 end

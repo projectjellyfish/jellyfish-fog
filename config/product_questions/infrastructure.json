@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "title": "AWS Fog Infrastructure",
+  "description": "AWS Fog Infrastructure",
+  "required": ["instance_size", "disk_size"],
+  "properties": {
+    "instance_size": {
+      "title": "Instance Size",
+      "type": "string",
+      "enum": [
+        "t2.micro",
+        "m3.medium",
+        "m3.large"
+      ],
+      "default": "m3.medium"
+    },
+    "disk_size": {
+      "title": "Disk Size",
+      "type": "string",
+      "default": "40"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+---
+branches:
+  only:
+    - master
+cache: bundler
+install: bundle install
+notifications:
+  email: false
+rvm: 2.2.2
+script: bundle exec rake
+sudo: false

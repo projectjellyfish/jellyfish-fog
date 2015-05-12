@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "title": "Storage",
+  "title": "AWS Fog Storage",
+  "required": ["availability", "region"],
+  "properties": {
+    "availability": {
+      "title": "Storage Redundancy",
+      "type": "string",
+      "enum": [
+        "normal",
+        "reduced"
+      ],
+      "default": "normal"
+    },
+    "region": {
+      "title": "DB Engine",
+      "type": "string",
+      "enum": [
+        "",
+        "us-west-1",
+        "us-west-2",
+        "EU",
+        "ap-northeast-1",
+        "ap-southeast-1",
+        "ap-southeast-2"
+      ],
+      "default": ""
+    }
+  }
+}

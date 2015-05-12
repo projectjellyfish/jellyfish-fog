@@ -1,0 +1,5 @@
+{
+  "AWS Fog Databases": "Jellyfish::Fog::Databases",
+  "AWS Fog Storage": "Jellyfish::Fog::Storage",
+  "AWS Fog Infrastructure": "Jellyfish::Fog::Infrastructure"
+}

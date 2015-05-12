@@ -1,3 +1,5 @@
-module JellyfishFog
-  VERSION = '0.0.1'
+module Jellyfish
+  module Fog
+    VERSION = '0.0.1'
+  end
 end
