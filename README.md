@@ -2,9 +2,25 @@
 
 Adds infrastructure, database, and storage product types to Jellyfish, and enables their provisioning on cloud service providers (AWS, Azure, DigitalOcean and VMWare) via the [Fog](http://fog.io) gem.
 
-## Setup
+## Installation
 
-Add the following keys to your ENV:
+### Setup Gemfile
+
+Include `jellyfish-fog` in parent Gemfile from GitHub:
+```
+gem 'jellyfish-fog', git: 'git://github.com/projectjellyfish/jellyfish-fog.git
+```
+
+Or include it locally:
+```
+  gem 'jellyfish-fog', path: '../jellyfish-fog'
+```
+
+And run `bundle install`.
+
+### Setup Env Vars
+
+Add the following keys:
 
 ```
 AWS_ACCESS_KEY_ID        = key
