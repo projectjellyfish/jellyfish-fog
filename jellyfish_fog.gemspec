@@ -5,7 +5,7 @@ require 'jellyfish_fog/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = 'jellyfish_fog'
+  s.name        = 'jellyfish-fog'
   s.version     = Jellyfish::Fog::VERSION
   s.authors     = ['mafernando']
   s.email       = ['fernando_michael@bah.com']
