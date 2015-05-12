@@ -3,7 +3,7 @@ module Jellyfish
     class Infrastructure < Jellyfish::Provisioner
       def provision
         # TODO: Must get an image_id from product
-        details = { 'image_id' => 'ami-acca47c4' }
+        details = { 'image_id' => 'ami-1ccae774' }
         server = nil
 
         handle_errors do
