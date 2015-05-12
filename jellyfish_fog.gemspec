@@ -6,7 +6,7 @@ require 'jellyfish_fog/version'
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = 'jellyfish_fog'
-  s.version     = JellyfishFog::VERSION
+  s.version     = Jellyfish::Fog::VERSION
   s.authors     = ['mafernando']
   s.email       = ['fernando_michael@bah.com']
   s.homepage    = 'www.projectjellyfish.org'
@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails'
   s.add_dependency 'dotenv-rails' # to use env vars from jellyfish api
   s.add_dependency 'pg' # to use jellyfish db
+  s.add_dependency 'fog'
+  s.add_dependency 'bcrypt'
 end
