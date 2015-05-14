@@ -3,8 +3,6 @@ module Jellyfish
     module AWS
       class Infrastructure < Jellyfish::Provisioner
         def provision
-          # TODO: Must get an image_id from product
-          details = { 'image_id' => 'ami-1ccae774' }
           server = nil
 
           handle_errors do
