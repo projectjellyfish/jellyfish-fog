@@ -2,7 +2,7 @@
   "type": "object",
   "title": "AWS Fog Infrastructure",
   "description": "AWS Fog Infrastructure",
-  "required": ["instance_size", "disk_size"],
+  "required": ["ami_id", "instance_size", "disk_size"],
   "properties": {
     "ami_id": {
       "title": "AMI ID",
