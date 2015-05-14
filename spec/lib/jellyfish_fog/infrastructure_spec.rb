@@ -5,6 +5,7 @@ module Jellyfish
         it 'provisions and retires infrastructure using fog' do
           enable_aws_fog_provisioning
 
+          order_item.answers = { 'image_id' => 'ami-1ccae774' }
           Infrastructure.new(order_item).provision
 
           expect(order_item.provision_status).to eq 'ok'
