@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email       = ['fernando_michael@bah.com']
   s.homepage    = 'www.projectjellyfish.org'
   s.summary     = 'Jellyfish Fog Module '
-  s.description = 'A module that adds fog support to Jellyfish API'
+  s.description = 'A module that adds Fog support to Jellyfish API'
   s.license     = 'APACHE'
   s.files       = Dir['{app,config,db,lib}/**/*', 'LICENSE', 'Rakefile', 'README.md']
   s.add_dependency 'rails'
