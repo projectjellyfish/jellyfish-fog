@@ -4,6 +4,11 @@
   "description": "AWS Fog Infrastructure",
   "required": ["instance_size", "disk_size"],
   "properties": {
+    "ami_id": {
+      "title": "AMI ID",
+      "type": "string",
+      "default": "ami-1ccae774"
+    },
     "instance_size": {
       "title": "Instance Size",
       "type": "string",
