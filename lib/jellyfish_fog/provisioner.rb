@@ -14,7 +14,9 @@ module Jellyfish
       @order_item = order_item
     end
 
-    # private
+    def details
+      order_item.answers
+    end
 
     def self.perform(order_item_id, error_method)
       order_item = OrderItem.find(order_item_id)
