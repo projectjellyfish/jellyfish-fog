@@ -6,7 +6,7 @@ Adds infrastructure, database, and storage product types to [Project Jellyfish A
 
 ### Setup Gemfile
 
-Include `jellyfish-fog` in parent Gemfile from GitHub:
+Include `jellyfish-fog` from GitHub in parent Gemfile:
 ```
 gem 'jellyfish-fog', git: 'git://github.com/projectjellyfish/jellyfish-fog.git
 ```
