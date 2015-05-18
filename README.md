@@ -1,5 +1,8 @@
 # Jellyfish Fog
 
+[![Code Climate](https://codeclimate.com/repos/555a0675695680378e0027e6/badges/43ed237afc55c67eb2ef/gpa.svg)](https://codeclimate.com/repos/555a0675695680378e0027e6/feed)
+[![Test Coverage](https://codeclimate.com/repos/555a0675695680378e0027e6/badges/43ed237afc55c67eb2ef/coverage.svg)](https://codeclimate.com/repos/555a0675695680378e0027e6/coverage)
+
 Adds infrastructure, database, and storage product types to [Project Jellyfish API](https://github.com/projectjellyfish/api), and enables their provisioning on cloud service providers ([AWS](http://aws.amazon.com), [Azure](http://azure.microsoft.com/en-us), [DigitalOcean](https://www.digitalocean.com) and [VMWare](https://www.vmware.com/products/vrealize-suite)) via the [Fog](http://fog.io) gem.
 
 ## Installation
