@@ -1,7 +1,7 @@
 {
   "type": "object",
-  "title": "Storage",
   "title": "AWS Fog Storage",
+  "description": "AWS Fog Storage",
   "required": ["availability", "region"],
   "properties": {
     "availability": {
