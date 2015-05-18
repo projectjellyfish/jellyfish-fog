@@ -26,18 +26,18 @@ And run `bundle install`.
 Add the following keys:
 
 ```
-AWS_ACCESS_KEY_ID        = key
-AWS_SECRET_ACCESS_KEY_ID = secret
-MOCK_FOG                 = true
+JELLYFISH_AWS_ACCESS_KEY_ID        = key
+JELLYFISH_AWS_SECRET_ACCESS_KEY_ID = secret
+JELLYFISH_MOCK_FOG                 = true
 ```
 
 which can be set using the `.env` file or explicitly by the hosted environment (e.g. Heroku).
 
 **Key Descriptions**:
-- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY_ID` are used by Fog to authenticate to AWS when provisioning and retiring
+- `JELLYFISH_AWS_ACCESS_KEY_ID` and `JELLYFISH_AWS_SECRET_ACCESS_KEY_ID` are used by Fog to authenticate to AWS when provisioning and retiring
 assets.
 
-- If `MOCK_FOG` is not set to `false`, Fog will simulate provisioning and retirement rather than actually interacting with AWS. The AWS keys are still required but their values do not matter.
+- If `JELLYFISH_MOCK_FOG` is not set to `false`, Fog will simulate provisioning and retirement rather than actually interacting with AWS. The AWS keys are still required but their values do not matter.
 
 ## License
 
