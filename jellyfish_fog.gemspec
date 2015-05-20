@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Jellyfish::Fog::VERSION
   s.authors     = ['mafernando']
   s.email       = ['fernando_michael@bah.com']
-  s.homepage    = 'www.projectjellyfish.org'
+  s.homepage    = 'http://www.projectjellyfish.org/'
   s.summary     = 'Jellyfish Fog Module '
   s.description = 'A module that adds Fog support to Jellyfish API'
   s.license     = 'APACHE'
