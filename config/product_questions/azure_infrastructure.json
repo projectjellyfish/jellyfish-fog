@@ -1,0 +1,40 @@
+{
+  "type": "object",
+  "title": "Azure Fog Infrastructure",
+  "description": "Azure Fog Infrastructure",
+  "required" : ["image", "location", "vm_name", "vm_user", "password", "storage_account_name"],
+  "properties" : {
+    "image" :{
+      "title": "Image ID",
+      "type": "string",
+      "default": "jellyfish-20150519-359159-os-2015-05-19"
+    },
+    "location" : {
+      "title": "Location",
+      "type": "string",
+      "default": "West US"
+    },
+    "vm_name" :{
+      "title": "VM Name",
+      "type": "string",
+      "default": "fog-server"
+    },
+    "vm_user" :{
+      "title": "VM User",
+      "type": "string",
+      "default": "foguser"
+    },
+
+    "password" :{
+      "title": "Password}",
+      "type": "string",
+      "default": "ComplexPassword!123"
+    },
+    "storage_account_name" :{
+      "title": "Storage Account Name",
+      "type": "string",
+      "default": "fogstorage"
+    }
+  }
+}
+
