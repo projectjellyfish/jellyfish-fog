@@ -41,12 +41,6 @@ module Jellyfish
         def snapshot
           "snapshot-#{@order_item.uuid[0..5]}"
         end
-
-        def handle_errors
-          yield
-        rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
-          raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
-        end
       end
     end
   end

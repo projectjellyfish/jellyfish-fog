@@ -37,5 +37,13 @@ module Jellyfish
       order_item.provision_status = :critical
       order_item.status_msg = message
     end
+
+    private
+
+    def handle_errors
+      yield
+    rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
+      raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
+    end
   end
 end

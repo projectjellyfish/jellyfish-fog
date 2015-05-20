@@ -29,12 +29,6 @@ module Jellyfish
         def server_identifier
           @order_item.payload_response['id']
         end
-
-        def handle_errors
-          yield
-        rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
-          raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
-        end
       end
     end
     module Azure
@@ -65,12 +59,6 @@ module Jellyfish
 
         def server_attributes
           order_item.payload_response
-        end
-
-        def handle_errors
-          yield
-        rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
-          raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
         end
       end
     end
