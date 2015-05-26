@@ -1,5 +1,30 @@
 module Jellyfish
   module Fog
+    module VMWare
+      class Infrastructure < Jellyfish::Provisioner
+        def provision
+          server = nil
+
+          handle_errors do
+            server = connection.vm_clone(details)
+          end
+
+          minimized_payload = {}
+          minimized_payload[:id]   = server['new_vm']['id']
+          minimized_payload[:name] = server['new_vm']['name']
+          minimized_payload[:uuid] = server['new_vm']['uuid']
+          @order_item.provision_status = 'ok'
+          @order_item.payload_response = minimized_payload.to_json
+        end
+
+        private
+
+        def connection
+          ::Fog::Compute.new(Jellyfish::Fog::VMWare.settings)
+        end
+      end
+    end
+
     module AWS
       class Infrastructure < Jellyfish::Provisioner
         def provision
@@ -31,6 +56,7 @@ module Jellyfish
         end
       end
     end
+
     module Azure
       class Infrastructure < Jellyfish::Provisioner
         def provision

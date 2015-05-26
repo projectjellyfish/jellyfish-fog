@@ -27,16 +27,23 @@ Add the following keys which can be set using the `.env` file or explicitly by t
 
 ```
 # GENERAL
-JELLYFISH_MOCK_FOG                 = true
+JELLYFISH_MOCK_FOG                  = true
 
 # AWS SPECIFIC
-JELLYFISH_AWS_ACCESS_KEY_ID        = key
-JELLYFISH_AWS_SECRET_ACCESS_KEY_ID = secret
+JELLYFISH_AWS_ACCESS_KEY_ID           = key
+JELLYFISH_AWS_SECRET_ACCESS_KEY_ID    = secret
 
 # AZURE SPECIFIC
-JELLYFISH_AZURE_SUB_ID             = azure_subscription_id
-JELLYFISH_AZURE_PEM_PATH           = azure_certificate.pem
-JELLYFISH_AZURE_API_URL            = https://management.core.windows.net
+JELLYFISH_AZURE_SUB_ID                = azure_subscription_id
+JELLYFISH_AZURE_PEM_PATH              = azure_certificate.pem
+JELLYFISH_AZURE_API_URL               = https://management.core.windows.net
+
+# VMWARE SPECIFIC
+JELLYFISH_VMWARE_USERNAME             = vmware_user
+JELLYFISH_VMWARE_PASSWORD             = vmware_password
+JELLYFISH_VMWARE_SERVER               = vmware_server
+JELLYFISH_VMWARE_EXPECTED_PUBKEY_HASH = vmware_pubkey_hash
+
 
 ```
 
@@ -51,6 +58,14 @@ JELLYFISH_AZURE_API_URL            = https://management.core.windows.net
 - `JELLYFISH_AZURE_PEM_PATH` is location of the client certificate pem file usd to authenticate with Azure. See [here](http://azure.microsoft.com/en-us/documentation/articles/cloud-services-python-how-to-use-service-management) for how to generate.
 
 - `JELLYFISH_AZURE_API_URL` is the API endpoint used for Azure provisioning
+
+- `JELLYFISH_VMWARE_USERNAME` is the vSphere user
+
+- `JELLYFISH_VMWARE_PASSWORD` is the vSphere password
+
+- `JELLYFISH_VMWARE_SERVER` is the vSphere server
+
+- `JELLYFISH_VMWARE_EXPECTED_PUBKEY_HASH` is the public key hash of the vSphere environment. Can be obtained by passing a dummy value and checking error logs. See [here](https://gist.github.com/jedi4ever/1216529#file-gistfile1-txt-L77-L79) for details.
 
 ## License
 
