@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "title": "VMWare Fog Infrastructure",
+  "description": "VMWare Fog Infrastructure",
+  "required" : ["instance_uuid", "name", "datacenter", "template_path"],
+  "properties" : {
+    "instance_uuid" :{
+      "title": "Instance UUID",
+      "type": "string",
+      "default": "42189f8b-b8d9-3a77-36c1-19f41f749e4f"
+    },
+    "name" :{
+      "title": "Name",
+      "type": "string",
+      "default": "RHEL6_TEST_CLONE"
+    },
+    "datacenter" :{
+      "title": "Datacenter",
+      "type": "string",
+      "default": "RSP"
+    },
+    "template_path" :{
+      "title": "Template Path",
+      "type": "string",
+      "default": "TestRHEL6"
+    }
+  }
+}
+

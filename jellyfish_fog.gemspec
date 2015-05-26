@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'dotenv-rails' # to use env vars from jellyfish api
   s.add_dependency 'pg' # to use jellyfish db
   s.add_dependency 'azure', '>= 0.6.0'
+  s.add_dependency 'rbvmomi'
   s.add_dependency 'fog'
   s.add_dependency 'fog-azure'
   s.add_dependency 'bcrypt'

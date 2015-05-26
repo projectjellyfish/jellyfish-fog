@@ -1,3 +1,4 @@
+require 'rbvmomi'
 require 'azure'
 require 'fog'
 require 'fog/azure'
@@ -10,6 +11,23 @@ require 'jellyfish_fog/storage'
 
 module Jellyfish
   module Fog
+    def self.aws_settings
+      {
+        aws_access_key_id: ENV.fetch('JELLYFISH_AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key: ENV.fetch('JELLYFISH_AWS_SECRET_ACCESS_KEY')
+      }
+    end
+    module VMWare
+      def self.settings
+        {
+          provider: 'vsphere',
+          vsphere_username: ENV.fetch('JELLYFISH_VMWARE_USERNAME'),
+          vsphere_password: ENV.fetch('JELLYFISH_VMWARE_PASSWORD'),
+          vsphere_server: ENV.fetch('JELLYFISH_VMWARE_SERVER'),
+          vsphere_expected_pubkey_hash: ENV.fetch('JELLYFISH_VMWARE_EXPECTED_PUBKEY_HASH')
+        }
+      end
+    end
     module Azure
       def self.settings
         {
@@ -19,12 +37,6 @@ module Jellyfish
           azure_api_url: ENV.fetch('JELLYFISH_AZURE_API_URL')
         }
       end
-    end
-    def self.aws_settings
-      {
-        aws_access_key_id: ENV.fetch('JELLYFISH_AWS_ACCESS_KEY_ID'),
-        aws_secret_access_key: ENV.fetch('JELLYFISH_AWS_SECRET_ACCESS_KEY')
-      }
     end
   end
 end
