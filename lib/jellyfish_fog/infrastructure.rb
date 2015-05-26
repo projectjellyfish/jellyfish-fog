@@ -48,7 +48,7 @@ module Jellyfish
         private
 
         def connection
-          ::Fog::Compute.new(Jellyfish::Fog.aws_settings.merge(provider: 'AWS'))
+          ::Fog::Compute.new(Jellyfish::Fog::AWS.settings)
         end
 
         def server_identifier
