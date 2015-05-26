@@ -23,7 +23,7 @@ module Jellyfish
           run_in_mock_mode
 
           allow(order_item).to receive_message_chain(:provision_status=).with('ok')
-          allow(order_item).to receive_message_chain(:payload_response=).with(vmware_server.response['new_vm'].to_json)
+          allow(order_item).to receive_message_chain(:payload_response=).with(vmware_server.response.to_json)
 
           new_vm_spec = Infrastructure.new(order_item)
 
@@ -32,7 +32,7 @@ module Jellyfish
           allow(new_vm_spec).to receive_message_chain('connection.vm_clone.get_datacenter') { true }
           allow(new_vm_spec).to receive_message_chain('connection.vm_clone') { vmware_server.response }
 
-          expect(new_vm_spec.provision).to eq('{"id":"50186187-12e0-5c4a-67bd-ce1b670a8f5d","name":"RHEL6_TEST_CLONE","uuid":"4218c19a-7c5e-238f-1cea-fb2ffc3349dd"}')
+          expect(new_vm_spec.provision).to eq(vmware_server.response.to_json)
         end
 
         def run_in_mock_mode

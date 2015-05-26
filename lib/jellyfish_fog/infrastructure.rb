@@ -9,12 +9,9 @@ module Jellyfish
             server = connection.vm_clone(details)
           end
 
-          minimized_payload = {}
-          minimized_payload[:id]   = server['new_vm']['id']
-          minimized_payload[:name] = server['new_vm']['name']
-          minimized_payload[:uuid] = server['new_vm']['uuid']
+          server['new_vm'] = server['new_vm'].except('parent')
           @order_item.provision_status = 'ok'
-          @order_item.payload_response = minimized_payload.to_json
+          @order_item.payload_response = server.to_json
         end
 
         private
@@ -48,7 +45,7 @@ module Jellyfish
         private
 
         def connection
-          ::Fog::Compute.new(Jellyfish::Fog.aws_settings.merge(provider: 'AWS'))
+          ::Fog::Compute.new(Jellyfish::Fog::AWS.settings)
         end
 
         def server_identifier

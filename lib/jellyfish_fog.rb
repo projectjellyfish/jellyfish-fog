@@ -11,11 +11,14 @@ require 'jellyfish_fog/storage'
 
 module Jellyfish
   module Fog
-    def self.aws_settings
-      {
-        aws_access_key_id: ENV.fetch('JELLYFISH_AWS_ACCESS_KEY_ID'),
-        aws_secret_access_key: ENV.fetch('JELLYFISH_AWS_SECRET_ACCESS_KEY')
-      }
+    module AWS
+      def self.settings
+        {
+          provider: 'aws',
+          aws_access_key_id: ENV.fetch('JELLYFISH_AWS_ACCESS_KEY_ID'),
+          aws_secret_access_key: ENV.fetch('JELLYFISH_AWS_SECRET_ACCESS_KEY')
+        }
+      end
     end
     module VMWare
       def self.settings
@@ -31,7 +34,7 @@ module Jellyfish
     module Azure
       def self.settings
         {
-          provider: 'Azure',
+          provider: 'azure',
           azure_sub_id: ENV.fetch('JELLYFISH_AZURE_SUB_ID'),
           azure_pem: ENV.fetch('JELLYFISH_AZURE_PEM_PATH'),
           azure_api_url: ENV.fetch('JELLYFISH_AZURE_API_URL')
