@@ -17,12 +17,12 @@
     "vm_name" :{
       "title": "VM Name",
       "type": "string",
-      "default": "fog_vm"
+      "default": "fogvmclone"
     },
     "vm_user" :{
       "title": "VM User",
       "type": "string",
-      "default": "fog_user"
+      "default": "jellyfish"
     },
 
     "password" :{
@@ -33,7 +33,7 @@
     "storage_account_name" :{
       "title": "Storage Account Name",
       "type": "string",
-      "default": "fog_storage"
+      "default": "fogvmclonestorage"
     }
   }
 }
