@@ -10,7 +10,7 @@ module Jellyfish
           end
 
           server['new_vm'] = server['new_vm'].except('parent')
-          @order_item.provision_status = 'ok'
+          @order_item.provision_status = :ok
           @order_item.payload_response = server.to_json
         end
 
@@ -31,7 +31,7 @@ module Jellyfish
             server = connection.servers.create(details).tap { |s| s.wait_for { ready? } }
           end
 
-          @order_item.provision_status = 'ok'
+          @order_item.provision_status = :ok
           @order_item.payload_response = server.to_json
         end
 
@@ -39,7 +39,7 @@ module Jellyfish
           handle_errors do
             connection.servers.delete(server_identifier)
           end
-          @order_item.provision_status = 'retired'
+          @order_item.provision_status = :retired
         end
 
         private
@@ -58,20 +58,38 @@ module Jellyfish
       class Infrastructure < Jellyfish::Provisioner
         def provision
           server = nil
+          current_vm = nil
 
           handle_errors do
+            # CREATE THE AZURE VM CLONE
             server = connection.servers.create(details)
+
+            # LOOK UP VMS ASSOCIATED WITH AZURE SUBSCRIPTION
+            azure_vmms = ::Azure::VirtualMachineManagementService.new
+            vms = azure_vmms.list_virtual_machines
+
+            # LOCATE THE VM JUST CREATED
+            vms.each { |vm| current_vm = vm if vm.vm_name == details['vm_name'] }
           end
 
-          order_item.provision_status = :ok
-          order_item.payload_response = server.attributes
+          # POPULATE PAYLOAD RESPONSE TEMPLATE
+          payload_response = payload_response_template
+          payload_response[:raw] = server.attributes
+
+          # INCLUDE IPADDRESS AND HOSTANME IF THEY EXIST
+          payload_response[:defaults][:ip_address] = current_vm.ipaddress unless current_vm.ipaddress.nil?
+          payload_response[:defaults][:hostname] = current_vm.hostname unless current_vm.hostname.nil?
+
+          # UPDATE ORDER ITEM - SET STATUS TO CRITICAL IF CANNOT LOCATE IPADDRESS
+          @order_item.provision_status = current_vm.ipaddress.nil? ? :warning : :ok
+          @order_item.payload_response = payload_response
         end
 
         def retire
           handle_errors do
-            connection.delete_virtual_machine(server_attributes[:vm_name], server_attributes[:cloud_service_name])
+            connection.delete_virtual_machine(server_attributes['vm_name'], server_attributes['cloud_service_name'])
           end
-          order_item.provision_status = :retired
+          @order_item.provision_status = :retired
         end
 
         private
@@ -81,7 +99,7 @@ module Jellyfish
         end
 
         def server_attributes
-          order_item.payload_response
+          @order_item.payload_response['raw']
         end
       end
     end
