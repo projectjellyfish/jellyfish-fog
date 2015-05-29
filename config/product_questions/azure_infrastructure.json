@@ -7,7 +7,7 @@
     "image" :{
       "title": "Image ID",
       "type": "string",
-      "default": "jellyfish-20150519-359159-os-2015-05-19"
+      "default": "a699494373c04fc0bc8f2bb1389d6106__Win2K8R2SP1-Datacenter-201504.01-en.us-127GB.vhd"
     },
     "location" : {
       "title": "Location",
@@ -17,12 +17,12 @@
     "vm_name" :{
       "title": "VM Name",
       "type": "string",
-      "default": "fog-server"
+      "default": "fog_vm"
     },
     "vm_user" :{
       "title": "VM User",
       "type": "string",
-      "default": "foguser"
+      "default": "fog_user"
     },
 
     "password" :{
@@ -33,7 +33,7 @@
     "storage_account_name" :{
       "title": "Storage Account Name",
       "type": "string",
-      "default": "fogstorage"
+      "default": "fog_storage"
     }
   }
 }
