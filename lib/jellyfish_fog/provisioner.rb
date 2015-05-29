@@ -18,6 +18,10 @@ module Jellyfish
       order_item.answers
     end
 
+    def payload_response_template
+      { defaults: { ip_address: '127.0.0.1', hostname: 'TBD', total: '0.0' }, raw: nil }
+    end
+
     def self.perform(order_item_id, error_method)
       order_item = OrderItem.find(order_item_id)
       yield order_item
