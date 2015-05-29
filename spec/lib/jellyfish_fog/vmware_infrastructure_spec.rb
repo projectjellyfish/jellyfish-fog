@@ -22,7 +22,7 @@ module Jellyfish
         it 'clones vmware infrastructure using fog' do
           run_in_mock_mode
 
-          allow(order_item).to receive_message_chain(:provision_status=).with('ok')
+          allow(order_item).to receive_message_chain(:provision_status=).with(:ok)
           allow(order_item).to receive_message_chain(:payload_response=).with(vmware_server.response.to_json)
 
           new_vm_spec = Infrastructure.new(order_item)
