@@ -69,7 +69,10 @@ module Jellyfish
             vms = azure_vmms.list_virtual_machines
 
             # LOCATE THE VM JUST CREATED
-            vms.each { |vm| current_vm = vm if vm.vm_name == details['vm_name'] }
+            # vms.each { |vm| current_vm = vm if vm.vm_name == details['vm_name'] }
+            vms.each do |vm|
+              current_vm = vm if vm.vm_name == details[:vm_name]
+            end
           end
 
           # POPULATE PAYLOAD RESPONSE TEMPLATE
