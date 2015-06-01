@@ -28,6 +28,9 @@ module Jellyfish
           server = nil
 
           handle_errors do
+            details['vpc_id'] = nil unless !details['vpc_id'].blank?
+            details['subnet_id'] = nil unless !details['subnet_id'].blank?
+            details['security_group_ids'] = nil unless !details['security_group_ids'].blank?
             server = connection.servers.create(details).tap { |s| s.wait_for { ready? } }
           end
 
