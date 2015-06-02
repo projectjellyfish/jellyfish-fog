@@ -8,6 +8,7 @@ require 'jellyfish_fog/provisioner'
 require 'jellyfish_fog/infrastructure'
 require 'jellyfish_fog/databases'
 require 'jellyfish_fog/storage'
+require 'jellyfish_fog/subnet'
 require 'jellyfish_fog/vpc'
 
 module Jellyfish
