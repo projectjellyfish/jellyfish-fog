@@ -2,8 +2,8 @@ module Jellyfish
   module Fog
     module AWS
       describe Subnet do
-        it 'creates a new subet and deletes it' do
-          # INITIALIZE MOCK FOG
+        it 'creates a new subet and then deletes it' do
+          # INITIALIZE FOG IN MOCK MODE
           enable_aws_fog_provisioning
 
           # CREATE A VPC
@@ -40,7 +40,6 @@ module Jellyfish
         def subnet_order_item
           @subnet_order_item ||= OpenStruct.new
         end
-
 
         def enable_aws_fog_provisioning
           ::Fog.mock!

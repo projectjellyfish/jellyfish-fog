@@ -2,16 +2,31 @@ module Jellyfish
   module Fog
     module AWS
       describe VPC do
-        it 'creates a new vpc' do
+        it 'creates a new vpc and then retire it' do
+          # INITIALIZE FOG IN MOCK MODE
           enable_aws_fog_provisioning
-          order_item.answers = { 'cidr_block' => '10.0.0.0/16' }
-          server = VPC.new(order_item).provision
-          expect(order_item.provision_status).to eq :ok
-          expect(order_item.payload_response[:raw][:body]['vpcSet'][0]['cidrBlock']).to eq('10.0.0.0/16')
+
+          # CREATE A VPC
+          vpc_cidr_block = '10.0.0.0/16'
+          vpc_order_item.answers = { 'cidr_block' => vpc_cidr_block }
+          vpc = VPC.new(vpc_order_item).provision
+          expect(vpc_order_item.provision_status).to eq :ok
+          expect(vpc_order_item.payload_response[:raw][:body]['vpcSet'][0]['cidrBlock']).to eq(vpc_cidr_block)
+
+          # CREATE A FOG COMPUTE CONNECTION FOR RETIREMENT VERIFICATION
+          connection = ::Fog::Compute.new(Jellyfish::Fog::AWS.settings)
+          expect(connection.vpcs.count).to eq 1
+
+          # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
+          vpc_order_item.payload_response = JSON.parse(vpc_order_item.payload_response.to_json)
+
+          # RETIRE SUBNET
+          vpc = VPC.new(vpc_order_item).retire
+          expect(connection.vpcs.count).to eq 0
         end
 
-        def order_item
-          @order_item ||= OpenStruct.new
+        def vpc_order_item
+          @vpc_order_item ||= OpenStruct.new
         end
 
         def enable_aws_fog_provisioning
