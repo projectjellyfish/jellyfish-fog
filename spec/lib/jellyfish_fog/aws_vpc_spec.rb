@@ -5,9 +5,9 @@ module Jellyfish
         it 'creates a new vpc' do
           enable_aws_fog_provisioning
           order_item.answers = { 'cidr_block' => '10.0.0.0/16' }
-          server = Infrastructure.new(order_item).provision
+          server = VPC.new(order_item).provision
           expect(order_item.provision_status).to eq :ok
-          expect(JSON.parse(order_item.payload_response)['cidr_block']).to eq('10.0.0.0/16')
+          expect(order_item.payload_response[:raw][:body]['vpcSet'][0]['cidrBlock']).to eq('10.0.0.0/16')
         end
 
         def order_item
