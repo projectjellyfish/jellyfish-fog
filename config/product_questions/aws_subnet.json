@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "title": "AWS Fog Subnet",
+  "description": "AWS Fog Subnet",
+  "required": [],
+  "properties": {
+    "vpc_id": {
+      "title": "VPC ID",
+      "type": "string",
+      "default": "vpc-885fc5ed"
+    },
+    "cidr_block": {
+      "title": "CIDR Block",
+      "type": "string",
+      "default": "172.31.247.0/24"
+    }
+  }
+}
+

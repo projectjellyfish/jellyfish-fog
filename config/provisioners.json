@@ -2,6 +2,8 @@
   "AWS Fog Databases": "Jellyfish::Fog::AWS::Databases",
   "AWS Fog Storage": "Jellyfish::Fog::AWS::Storage",
   "AWS Fog Infrastructure": "Jellyfish::Fog::AWS::Infrastructure",
+  "AWS Fog VPC": "Jellyfish::Fog::AWS::VPC",
+  "AWS Fog Subnet": "Jellyfish::Fog::AWS::Subnet",
   "Azure Fog Infrastructure": "Jellyfish::Fog::Azure::Infrastructure",
   "VMWare Fog Infrastructure": "Jellyfish::Fog::VMWare::Infrastructure"
 }

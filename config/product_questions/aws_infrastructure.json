@@ -2,15 +2,15 @@
   "type": "object",
   "title": "AWS Fog Infrastructure",
   "description": "AWS Fog Infrastructure",
-  "required": ["ami_id", "instance_size", "disk_size"],
+  "required": ["ami_id", "flavor_id", "disk_size"],
   "properties": {
     "ami_id": {
       "title": "AMI ID",
       "type": "string",
       "default": "ami-1ccae774"
     },
-    "instance_size": {
-      "title": "Instance Size",
+    "flavor_id": {
+      "title": "Flavor Id",
       "type": "string",
       "enum": [
         "t2.micro",
@@ -23,6 +23,21 @@
       "title": "Disk Size",
       "type": "string",
       "default": "40"
+    },
+    "vpc_id": {
+      "title": "VPC ID",
+      "type": "string",
+      "default": ""
+    },
+    "security_group_ids": {
+      "title": "Security Group IDs",
+      "type": "string",
+      "default": ""
+    },
+    "subnet_id": {
+      "title": "Subnet ID",
+      "type": "string",
+      "default": ""
     }
   }
 }
