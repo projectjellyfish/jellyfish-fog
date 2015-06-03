@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "title": "AWS Fog Security Group",
+  "description": "AWS Fog Security Group",
+  "required": [],
+  "properties": {
+    "name": {
+      "title": "Name",
+      "type": "string",
+      "default": "jellyfish"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "default": "jellyfish users"
+    },
+    "vpc_id": {
+      "title": "VPC ID",
+      "type": "string",
+      "default": ""
+    }
+  }
+}
+
