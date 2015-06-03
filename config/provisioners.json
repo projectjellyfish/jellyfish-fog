@@ -5,6 +5,7 @@
   "AWS Fog VPC": "Jellyfish::Fog::AWS::VPC",
   "AWS Fog Subnet": "Jellyfish::Fog::AWS::Subnet",
   "AWS Fog Security Group": "Jellyfish::Fog::AWS::SecurityGroup",
+  "AWS Fog EBS": "Jellyfish::Fog::AWS::EBS",
   "Azure Fog Infrastructure": "Jellyfish::Fog::Azure::Infrastructure",
   "VMWare Fog Infrastructure": "Jellyfish::Fog::VMWare::Infrastructure"
 }

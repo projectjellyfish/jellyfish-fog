@@ -11,6 +11,7 @@ require 'jellyfish_fog/databases'
 require 'jellyfish_fog/storage'
 require 'jellyfish_fog/subnet'
 require 'jellyfish_fog/vpc'
+require 'jellyfish_fog/ebs'
 
 module Jellyfish
   module Fog

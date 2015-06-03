@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "title": "AWS Fog EBS",
+  "description": "AWS Fog EBS",
+  "required": [],
+  "properties": {
+    "size": {
+      "title": "Size",
+      "type": "string",
+      "default": "5"
+    },
+    "availability_zone": {
+      "title": "Availability Zone",
+      "type": "string",
+      "default": "us-east-1a"
+    }
+  }
+}
+
