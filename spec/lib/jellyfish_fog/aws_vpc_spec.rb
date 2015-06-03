@@ -2,7 +2,7 @@ module Jellyfish
   module Fog
     module AWS
       describe VPC do
-        it 'creates a new vpc and then retire it' do
+        it 'creates a new vpc and then deletes it' do
           # INITIALIZE FOG IN MOCK MODE
           enable_aws_fog_provisioning
 
