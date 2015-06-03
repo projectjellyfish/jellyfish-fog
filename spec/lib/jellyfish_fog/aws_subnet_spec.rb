@@ -31,6 +31,13 @@ module Jellyfish
           # RETIRE SUBNET
           subnet = Subnet.new(subnet_order_item).retire
           expect(connection.subnets.count).to eq 0
+
+          # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
+          vpc_order_item.payload_response = JSON.parse(vpc_order_item.payload_response.to_json)
+
+          # RETIRE VPC
+          vpc = VPC.new(vpc_order_item).retire
+          expect(connection.vpcs.count).to eq 0
         end
 
         def vpc_order_item
