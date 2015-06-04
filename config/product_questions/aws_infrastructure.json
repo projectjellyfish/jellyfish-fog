@@ -29,13 +29,13 @@
       "type": "string",
       "default": ""
     },
-    "security_group_ids": {
-      "title": "Security Group IDs",
+    "subnet_id": {
+      "title": "Subnet ID",
       "type": "string",
       "default": ""
     },
-    "subnet_id": {
-      "title": "Subnet ID",
+    "security_group_ids": {
+      "title": "Security Group IDs",
       "type": "string",
       "default": ""
     }

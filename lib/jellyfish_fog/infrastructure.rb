@@ -34,13 +34,20 @@ module Jellyfish
             server = connection.servers.create(details).tap { |s| s.wait_for { ready? } }
           end
 
+          # POPULATE PAYLOAD RESPONSE TEMPLATE
+          payload_response = payload_response_template
+          payload_response[:raw] = JSON.parse(server.to_json)
+
+          # INCLUDE IPADDRESS IF PRESENT
+          payload_response[:defaults][:ip_address] = server.public_ip_address unless server.public_ip_address.nil?
+
           @order_item.provision_status = :ok
-          @order_item.payload_response = server.to_json
+          @order_item.payload_response = payload_response
         end
 
         def retire
           handle_errors do
-            connection.servers.delete(server_identifier)
+            success = connection.servers.get(server_identifier).destroy
           end
           @order_item.provision_status = :retired
         end
@@ -52,7 +59,7 @@ module Jellyfish
         end
 
         def server_identifier
-          @order_item.payload_response['id']
+          @order_item.payload_response['raw']['id']
         end
       end
     end
