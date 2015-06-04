@@ -1,7 +1,7 @@
 {
   "type": "object",
-  "title": "AWS Fog Databases",
-  "description": "AWS Fog Databases",
+  "title": "AWS Fog Database",
+  "description": "AWS Fog Database",
   "required": ["DBInstanceClass", "Engine", "AllocatedStorage"],
   "properties": {
     "DBInstanceClass": {
