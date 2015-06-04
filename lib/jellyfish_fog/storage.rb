@@ -3,22 +3,26 @@ module Jellyfish
     module AWS
       class Storage < Jellyfish::Provisioner
         def provision
-          instance_name = "id-#{order_item.uuid[0..9]}"
-          begin
-            storage = connection.directories.create(key: instance_name, public: true)
-          rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
-            raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
+          storage = nil
+
+          handle_errors do
+            storage_name = "id-#{order_item.uuid[0..9]}"
+            storage = connection.directories.create(key: storage_name)
           end
 
-          order_item.payload_response = storage.to_json
-          order_item.provision_status = 'ok'
+          # POPULATE PAYLOAD RESPONSE TEMPLATE
+          payload_response = payload_response_template
+          payload_response[:raw] = storage
+
+          @order_item.provision_status = :ok
+          @order_item.payload_response = payload_response
         end
 
         def retire
-          connection.delete_bucket(storage_key)
-          order_item.provision_status = 'retired'
-        rescue Excon::Errors::BadRequest, Excon::Errors::Forbidden => e
-          raise e, 'Bad request. Check for valid credentials and proper permissions.', e.backtrace
+          handle_errors do
+            connection.delete_bucket(identifier)
+          end
+          order_item.provision_status = :retired
         end
 
         private
@@ -27,8 +31,8 @@ module Jellyfish
           ::Fog::Storage.new(Jellyfish::Fog::AWS.settings)
         end
 
-        def storage_key
-          order_item.payload_response['key']
+        def identifier
+          @order_item.payload_response['raw']['key']
         end
       end
     end
