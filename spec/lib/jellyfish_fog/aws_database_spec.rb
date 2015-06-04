@@ -7,7 +7,7 @@ module Jellyfish
           enable_aws_fog_provisioning
 
           # CREATE AN DATABASE INSTANCE
-          db = Database.new(order_item).provision
+          Database.new(order_item).provision
 
           # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
           order_item.payload_response = JSON.parse(order_item.payload_response.to_json)
@@ -25,7 +25,7 @@ module Jellyfish
           expect(connection.servers.count).to eq 1
 
           # DELETE DATABASE INSTANCE
-          db = Database.new(order_item).retire
+          Database.new(order_item).retire
 
           # VERIFY EC2 INSTANCE WAS DELETED
           expect(order_item.provision_status).to eq :retired

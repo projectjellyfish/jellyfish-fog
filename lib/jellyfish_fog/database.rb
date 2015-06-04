@@ -28,7 +28,7 @@ module Jellyfish
 
         def retire(skip_final_snap_shot = true)
           handle_errors do
-            snapshot_id = skip_final_snap_shot ? '': snapshot
+            snapshot_id = skip_final_snap_shot ? '' : snapshot
             connection.delete_db_instance(identifier, snapshot_id, skip_final_snap_shot)
           end
           @order_item.provision_status = :retired

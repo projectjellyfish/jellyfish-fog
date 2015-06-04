@@ -9,7 +9,7 @@ module Jellyfish
           # CREATE A VPC
           vpc_cidr_block = '10.0.0.0/16'
           vpc_order_item.answers = { 'cidr_block' => vpc_cidr_block }
-          vpc = VPC.new(vpc_order_item).provision
+          VPC.new(vpc_order_item).provision
           expect(vpc_order_item.provision_status).to eq :ok
           expect(vpc_order_item.payload_response[:raw][:body]['vpcSet'][0]['cidrBlock']).to eq(vpc_cidr_block)
 
@@ -21,7 +21,7 @@ module Jellyfish
           vpc_order_item.payload_response = JSON.parse(vpc_order_item.payload_response.to_json)
 
           # RETIRE SUBNET
-          vpc = VPC.new(vpc_order_item).retire
+          VPC.new(vpc_order_item).retire
           expect(connection.vpcs.count).to eq 0
         end
 

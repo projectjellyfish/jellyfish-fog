@@ -7,7 +7,7 @@ module Jellyfish
 
           handle_errors do
             # create_security_group(name, description, vpc_id = nil)
-            details['vpc_id'] = nil unless !details['vpc_id'].blank?
+            details['vpc_id'] = nil if details['vpc_id'].blank?
             server = connection.create_security_group(details['name'], details['description'], details['vpc_id'])
           end
 
@@ -24,7 +24,6 @@ module Jellyfish
 
         def retire
           handle_errors do
-            #delete_security_group(name, id = nil) ⇒ Object
             security_group_name = nil
             connection.delete_security_group(security_group_name, server_identifier)
           end
