@@ -2,30 +2,12 @@
   "type": "object",
   "title": "AWS Fog Storage",
   "description": "AWS Fog Storage",
-  "required": ["availability", "region"],
+  "required": [],
   "properties": {
-    "availability": {
-      "title": "Storage Redundancy",
+    "name": {
+      "title": "S3 Bucket Name",
       "type": "string",
-      "enum": [
-        "normal",
-        "reduced"
-      ],
-      "default": "normal"
-    },
-    "region": {
-      "title": "DB Engine",
-      "type": "string",
-      "enum": [
-        "",
-        "us-west-1",
-        "us-west-2",
-        "EU",
-        "ap-northeast-1",
-        "ap-southeast-1",
-        "ap-southeast-2"
-      ],
-      "default": ""
+      "default": "jellyfish"
     }
   }
 }

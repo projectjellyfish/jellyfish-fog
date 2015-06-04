@@ -28,9 +28,9 @@ module Jellyfish
           server = nil
 
           handle_errors do
-            details['vpc_id'] = nil unless !details['vpc_id'].blank?
-            details['subnet_id'] = nil unless !details['subnet_id'].blank?
-            details['security_group_ids'] = nil unless !details['security_group_ids'].blank?
+            details['vpc_id'] = nil if details['vpc_id'].blank?
+            details['subnet_id'] = nil if details['subnet_id'].blank?
+            details['security_group_ids'] = nil if details['security_group_ids'].blank?
             server = connection.servers.create(details).tap { |s| s.wait_for { ready? } }
           end
 
@@ -47,7 +47,7 @@ module Jellyfish
 
         def retire
           handle_errors do
-            success = connection.servers.get(server_identifier).destroy
+            connection.servers.get(server_identifier).destroy
           end
           @order_item.provision_status = :retired
         end

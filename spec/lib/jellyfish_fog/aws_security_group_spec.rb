@@ -11,16 +11,16 @@ module Jellyfish
 
           # CREATE A VPC
           security_group_order_item.answers = { 'name' => 'jellyfish', 'description' => 'jellyfish users', 'vpc_id' => '' }
-          security_group = SecurityGroup.new(security_group_order_item).provision
+          SecurityGroup.new(security_group_order_item).provision
           expect(security_group_order_item.provision_status).to eq :ok
-          expect(security_group_order_item.payload_response[:raw][:body]['groupId']).to eq(connection.security_groups.select { |i| i.name == security_group_order_item.answers['name'] }.first.group_id)
+          expect(security_group_order_item.payload_response[:raw][:body]['groupId']).to eq(connection.security_groups.find { |i| i.name == security_group_order_item.answers['name'] }.group_id)
 
           # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
           security_group_order_item.payload_response = JSON.parse(security_group_order_item.payload_response.to_json)
 
           # RETIRE SECURITY GROUP
-          security_group = SecurityGroup.new(security_group_order_item).retire
-          expect(connection.security_groups.select { |i| i.name == security_group_order_item.answers['name'] }.count).to eq 0
+          SecurityGroup.new(security_group_order_item).retire
+          expect(connection.security_groups.count { |i| i.name == security_group_order_item.answers['name'] }).to eq 0
         end
 
         def security_group_order_item

@@ -7,7 +7,7 @@ module Jellyfish
 
           handle_errors do
             server = connection.volumes.new(details)
-            success = server.save
+            server.save
           end
 
           # POPULATE PAYLOAD RESPONSE TEMPLATE
@@ -20,7 +20,7 @@ module Jellyfish
 
         def retire
           handle_errors do
-            server = connection.volumes.get(server_identifier).destroy
+            connection.volumes.get(server_identifier).destroy
           end
           @order_item.provision_status = :retired
         end

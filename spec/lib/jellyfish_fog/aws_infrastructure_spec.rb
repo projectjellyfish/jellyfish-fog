@@ -8,7 +8,7 @@ module Jellyfish
 
           # CREATE AN EC2 INSTANCE
           order_item.answers = { 'image_id' => 'ami-1ccae774' }
-          server = Infrastructure.new(order_item).provision
+          Infrastructure.new(order_item).provision
 
           # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
           order_item.payload_response = JSON.parse(order_item.payload_response.to_json)
@@ -23,7 +23,7 @@ module Jellyfish
           expect(connection.servers.count).to eq 1
 
           # DELETE EC2 INSTANCE
-          server = Infrastructure.new(order_item).retire
+          Infrastructure.new(order_item).retire
 
           # VERIFY EC2 INSTANCE WAS DELETED (SLEEP B/C MOCK FOG NEEDS TIME TO REMOVE INSTANCE FROM MEMORY)
           expect(order_item.provision_status).to eq :retired
