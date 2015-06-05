@@ -12,7 +12,7 @@ module Jellyfish
 
           # POPULATE PAYLOAD RESPONSE TEMPLATE
           payload_response = payload_response_template
-          payload_response[:raw] = storage
+          payload_response[:raw] = JSON.parse(storage.to_json)
 
           @order_item.provision_status = :ok
           @order_item.payload_response = payload_response

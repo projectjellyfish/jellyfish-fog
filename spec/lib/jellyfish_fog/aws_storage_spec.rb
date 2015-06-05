@@ -10,11 +10,6 @@ module Jellyfish
           Storage.new(order_item).provision
 
           # CONVERT THE PAYLOAD_RESPONSE TO JSON SINCE IT IS PERSISTED THAT WAY IN ORDER ITEM
-          tmp = order_item.payload_response[:raw]
-          order_item.payload_response[:raw] = {}
-          order_item.payload_response[:raw][:key] = tmp.key
-          order_item.payload_response[:raw][:creation_date] = tmp.creation_date
-          order_item.payload_response[:raw][:location] = tmp.location
           order_item.payload_response = JSON.parse(order_item.payload_response.to_json)
 
           # CREATE A FOG COMPUTE CONNECTION FOR VERIFICATION
