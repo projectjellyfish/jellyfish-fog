@@ -31,7 +31,7 @@ JELLYFISH_MOCK_FOG                  = true
 
 # AWS SPECIFIC
 JELLYFISH_AWS_ACCESS_KEY_ID           = key
-JELLYFISH_AWS_SECRET_ACCESS_KEY_ID    = secret
+JELLYFISH_AWS_SECRET_ACCESS_KEY       = secret
 
 # AZURE SPECIFIC
 JELLYFISH_AZURE_SUB_ID                = azure_subscription_id
